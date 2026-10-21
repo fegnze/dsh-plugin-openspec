@@ -1,5 +1,5 @@
 {
-  "name": "dsh-openspec",
+  "name": "@fegnze/dsh-plugin-openspec",
   "version": "0.1.1",
   "license": "MIT",
   "author": "fegnze",
@@ -10,11 +10,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fegnze/dsh-openspec.git"
+    "url": "git+https://github.com/fegnze/dsh-plugin-openspec.git"
   },
-  "homepage": "https://github.com/fegnze/dsh-openspec#readme",
+  "homepage": "https://github.com/fegnze/dsh-plugin-openspec#readme",
   "bugs": {
-    "url": "https://github.com/fegnze/dsh-openspec/issues"
+    "url": "https://github.com/fegnze/dsh-plugin-openspec/issues"
   },
   "publishConfig": {
     "access": "public",

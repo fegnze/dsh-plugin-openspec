@@ -1,6 +1,8 @@
-# dsh-openspec
+# dsh-plugin-openspec
 
 [English](<../README.md>) | 简体中文
+
+npm 包名：`@fegnze/dsh-plugin-openspec`。无 scope 的 `dsh-openspec` 属于其他维护者，不是本移植版。保留既有会话／侧栏 ID `dsh-openspec`；旧本地 bundle 应替换，不能同时启用两种包身份。
 
 OpenSpecGUI 的 DSH Desktop 移植版。保留原 HTML/CSS/JavaScript 渲染器、进度组件、路由、Markdown 解析及工作区业务模型，不再另造文档浏览器。会话「对话／轨迹／上下文」旁和右侧边栏新标签页均有 **SPEC** 入口。
 

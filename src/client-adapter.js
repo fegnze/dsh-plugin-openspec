@@ -1,4 +1,4 @@
-window.__ModuleLoader__.load({ id: 'dsh-openspec', factory: require => {
+window.__ModuleLoader__.load({ id: '@fegnze/dsh-plugin-openspec', factory: require => {
   const React = require('react');
   const h = React.createElement;
   const html = '__ORIGINAL_HTML__';

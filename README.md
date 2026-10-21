@@ -1,6 +1,8 @@
-# dsh-openspec
+# dsh-plugin-openspec
 
 English | [简体中文](<docs/zh.md>)
+
+npm: `@fegnze/dsh-plugin-openspec`. The unscoped npm package `dsh-openspec` belongs to another maintainer and is not this port. Existing conversation/sidebar IDs remain `dsh-openspec`; replace an old local bundle rather than enabling both identities.
 
 OpenSpecGUI port for DSH Desktop. The original HTML/CSS/JavaScript renderer, progress component, router, Markdown parser and workspace business model are retained, not recreated as a document browser. Open **SPEC** beside Chat / Trajectory / Context or from the right sidebar's new-tab guide.
 
