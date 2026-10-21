@@ -1,0 +1,19 @@
+{
+  "source": "OpenSpecGUI",
+  "licenseDeclaration": "MIT",
+  "files": {
+    "src/renderer/app.js": "fee24d6dc1cce11003ae5461031e77520c6ed50b904d27f44dae382d12fbb8b0",
+    "src/renderer/styles.css": "06b6a787a13f60fd21172b36c6aeca1c39a0adfe5afc90a45f6a89bbd68e08c3",
+    "src/renderer/index.html": "67ee07f0e4f9631b9ef98eed87467d7ffef88cfc6e76767b9a56d68214c0eb62",
+    "src/renderer/progress.js": "22be358be35a0d6a556bf7e62cd25616ed4416da0bc313b43c15608d32405197",
+    "src/renderer/host-router.js": "b90243413532f16d03ede9cd5a3746e2ff10bb1bbf3e5162556ae9254a0ed46f",
+    "src/renderer/vendor/marked.umd.js": "2e20e86f0a13107ae9bf00675894bbb573716a8e5b4fde612eacaff1e404c128",
+    "src/renderer/vendor/lucide.min.js": "7ff662ef4e9e6ba0c815c614a433be23b48f32fc209be83ecb226fc18367c851",
+    "licenses/MARKED-LICENSE.md": "8e3a3f82f59a60958f56ca08f445647c32a4733dc7ca6c2c46f6eb898471ab9c",
+    "licenses/LUCIDE-LICENSE": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57",
+    "THIRD_PARTY_NOTICES.md": "41ee9e07301b823f9a00a77e3c4e5d53b85c47f155ae76ac12aa57fe71c61715",
+    "LICENSE": "3189e34b4d1fefd045aa7153374f86ed6f9c1abfdd95e517dce2cdf5e7135b8c"
+  },
+  "repository": "https://github.com/fegnze/OpenSpecGUI",
+  "licenseCommit": "9527715"
+}

@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' app:; script-src 'self' app:; style-src 'self' app:; img-src 'self' app: data:; font-src 'self' app:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+    <meta name="description" content="多项目 OpenSpec 本地执行工作台">
+    <title>OpenSpec GUI</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="vendor/marked.umd.js"></script>
+    <script defer src="vendor/lucide.min.js"></script>
+    <script defer src="progress.js"></script>
+    <script defer src="host-router.js"></script>
+    <script defer src="initiative-app-host.js"></script>
+    <script defer src="app.js"></script>
+</head>
+<body>
+    <div class="app-shell" id="app-shell" data-theme="system">
+        <div class="window-drag-region" aria-hidden="true"></div>
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-mark" aria-hidden="true"><img src="assets/product-mark.png" alt=""></div>
+                <div class="brand-copy">
+                    <strong>OpenSpec GUI</strong>
+                    <span>本地执行工作台</span>
+                </div>
+            </div>
+
+            <section class="project-control" aria-label="当前项目">
+                <div class="project-control-label">
+                    <span>当前项目</span>
+                    <button class="project-manage-button" id="project-manage-button" type="button" aria-label="管理项目" data-tooltip="管理项目">
+                        <i data-lucide="settings-2" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="project-picker" id="project-picker">
+                    <button class="project-picker-button" id="project-picker-button" type="button" aria-label="切换项目" aria-haspopup="listbox" aria-expanded="false" aria-controls="project-options">
+                        <span class="project-glyph"><i data-lucide="folder-git-2" aria-hidden="true"></i></span>
+                        <span class="project-select-copy">
+                            <strong id="project-picker-name">尚未添加项目</strong>
+                            <small id="project-health">等待选择</small>
+                        </span>
+                        <i data-lucide="chevron-down" aria-hidden="true"></i>
+                    </button>
+                    <div class="project-menu" id="project-options" role="listbox" aria-label="项目列表" hidden></div>
+                </div>
+            </section>
+
+            <nav class="primary-nav" aria-label="主导航">
+                <button type="button" data-route="overview" aria-label="执行台" aria-current="page" data-tooltip="执行台">
+                    <i data-lucide="gauge" aria-hidden="true"></i>
+                    <span>执行台</span>
+                </button>
+                <button type="button" data-route="initiatives" aria-label="专项" data-tooltip="专项">
+                    <i data-lucide="layers-3" aria-hidden="true"></i>
+                    <span>专项</span>
+                </button>
+                <button type="button" data-route="specs" aria-label="规范" data-tooltip="规范">
+                    <i data-lucide="book-open-text" aria-hidden="true"></i>
+                    <span>规范</span>
+                </button>
+                <button type="button" data-route="archives" aria-label="归档" data-tooltip="归档">
+                    <i data-lucide="archive" aria-hidden="true"></i>
+                    <span>归档</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-status" id="sidebar-status" aria-live="polite">
+                <div class="source-line"><span class="source-dot"></span><span>正在读取</span></div>
+                <small>只读模式</small>
+            </div>
+        </aside>
+
+        <section class="workspace">
+            <header class="toolbar">
+                <button class="toolbar-project-button" id="toolbar-project-button" type="button" aria-label="切换或管理项目" data-tooltip="切换或管理项目">
+                    <i data-lucide="folder-git-2" aria-hidden="true"></i>
+                    <span id="toolbar-project-name">选择项目</span>
+                </button>
+                <label class="search-field" for="global-search">
+                    <i data-lucide="search" aria-hidden="true"></i>
+                    <input id="global-search" type="search" autocomplete="off" placeholder="搜索提案、task、规范或 Requirement">
+                </label>
+                <div class="toolbar-actions">
+                    <label class="theme-control" for="theme-select">
+                        <i data-lucide="sun-moon" aria-hidden="true"></i>
+                        <span class="sr-only">主题</span>
+                        <select id="theme-select" aria-label="主题">
+                            <option value="system">跟随系统</option>
+                            <option value="light">浅色</option>
+                            <option value="dark">深色</option>
+                        </select>
+                    </label>
+                    <button class="icon-button" id="refresh-button" type="button" aria-label="刷新项目内容" data-tooltip="刷新项目内容">
+                        <i data-lucide="refresh-cw" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </header>
+
+            <section class="in-page-search" id="in-page-search" aria-label="页内查找" hidden>
+                <label for="in-page-search-input">
+                    <span class="sr-only">查找当前页面文本</span>
+                    <input id="in-page-search-input" type="search" autocomplete="off" placeholder="查找当前页面">
+                </label>
+                <output id="in-page-search-count" aria-live="polite">0 / 0</output>
+                <div class="in-page-search-actions" aria-label="查找结果导航">
+                    <button class="icon-button" id="in-page-search-previous" type="button" data-in-page-search-action="previous" aria-label="上一处匹配" disabled><i data-lucide="chevron-up" aria-hidden="true"></i></button>
+                    <button class="icon-button" id="in-page-search-next" type="button" data-in-page-search-action="next" aria-label="下一处匹配" disabled><i data-lucide="chevron-down" aria-hidden="true"></i></button>
+                    <button class="icon-button" id="in-page-search-close" type="button" data-in-page-search-action="close" aria-label="关闭页内查找"><i data-lucide="x" aria-hidden="true"></i></button>
+                </div>
+            </section>
+
+            <main class="page" id="page" aria-live="polite">
+                <div class="loading-state" aria-label="正在载入 OpenSpec 内容">
+                    <span></span><span></span><span></span>
+                </div>
+            </main>
+        </section>
+        <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+    </div>
+
+    <dialog class="project-dialog" id="project-dialog" aria-labelledby="project-dialog-title">
+        <header>
+            <div>
+                <h2 id="project-dialog-title">项目管理</h2>
+                <p>切换、添加或修复本机 OpenSpec 项目</p>
+            </div>
+            <button class="icon-button" type="button" data-project-action="close" aria-label="关闭项目管理" data-tooltip="关闭">
+                <i data-lucide="x" aria-hidden="true"></i>
+            </button>
+        </header>
+        <div class="project-dialog-actions">
+            <button class="primary-command" type="button" data-project-action="add"><i data-lucide="folder-plus" aria-hidden="true"></i>添加项目</button>
+            <button class="secondary-command" type="button" data-project-action="scan"><i data-lucide="scan-search" aria-hidden="true"></i>扫描目录</button>
+        </div>
+        <div class="project-dialog-status" id="project-dialog-status" aria-live="polite"></div>
+        <section class="project-registry-list" id="project-registry-list" aria-label="已添加项目"></section>
+        <section class="scan-results" id="scan-results" hidden>
+            <div class="scan-results-head"><strong>发现的项目</strong><span id="scan-results-count"></span></div>
+            <div id="scan-candidate-list"></div>
+            <button class="primary-command" id="import-candidates-button" type="button"><i data-lucide="import" aria-hidden="true"></i>导入所选项目</button>
+        </section>
+    </dialog>
+</body>
+</html>

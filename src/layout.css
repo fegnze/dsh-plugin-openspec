@@ -1,0 +1,63 @@
+/* DSH owns the application sidebar. Keep this workbench's navigation horizontal. */
+:host { box-sizing: border-box; font-family: var(--dsw-font-family, sans-serif); }
+:host(.dsh-openspec-main) { padding: 12px 16px 16px; }
+:host(.dsh-openspec-pane) { padding: 8px; }
+.dsh-openspec-root {
+  box-sizing: border-box; min-width: 0; min-height: 0;
+  border: 1px solid var(--line); border-radius: 16px;
+  background: var(--surface); overflow: hidden;
+}
+.dsh-openspec-root .app-shell {
+  display: grid; grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr); height: 100%; min-height: 0;
+}
+.dsh-openspec-root .sidebar {
+  display: flex; flex-direction: row; align-items: center; gap: 12px;
+  margin: 0; padding: 8px 16px; min-width: 0; min-height: 0;
+  border: 0; border-bottom: 1px solid var(--line); border-radius: 0;
+  box-shadow: none; background: var(--surface); color: var(--ink);
+  overflow: hidden;
+}
+.dsh-openspec-root .brand, .dsh-openspec-root .sidebar-status,
+.dsh-openspec-root .project-control { display: none !important; }
+.dsh-openspec-root .sidebar { overflow: clip; }
+.dsh-openspec-root .navigation-strip { overflow-y: hidden; scrollbar-width: none; }
+.dsh-openspec-root .navigation-strip::-webkit-scrollbar { display: none; }
+.dsh-openspec-root .initiative-app-host-shell > header { display: none; }
+.dsh-openspec-root .initiative-app-host-shell { grid-template-rows: minmax(0, 1fr); }
+.dsh-openspec-root .project-control { display: block; margin: 0; padding: 0; flex: 0 1 160px; min-width: 60px; }
+.dsh-openspec-root .project-control-label, .dsh-openspec-root .project-glyph,
+.dsh-openspec-root #project-health { display: none; }
+.dsh-openspec-root .project-picker-button { display: flex; width: 100%; grid-template-columns: none; margin: 0; padding: 0; min-height: 32px; background: transparent; border: 0; box-shadow: none; }
+.dsh-openspec-root .project-select-copy { min-width: 0; flex: 1; text-align: left; }
+.dsh-openspec-root #project-picker-name { display: block; max-width: 100%; }
+.dsh-openspec-root .project-select-copy strong { font-size: 13px; color: var(--muted); }
+.dsh-openspec-root .navigation-strip { display: flex; align-items: center; min-width: 0; overflow-x: auto; flex: 1; gap: 12px; scrollbar-width: thin; }
+.dsh-openspec-root .primary-nav { display: flex; align-items: center; gap: 4px; width: auto; flex: 0 0 auto; }
+.dsh-openspec-root .primary-nav button { display: flex; flex: 0 0 auto; width: auto; min-height: 34px; padding: 6px 10px; gap: 7px; white-space: nowrap; }
+.dsh-openspec-root .primary-nav button span { display: inline; white-space: nowrap; }
+.dsh-openspec-root .initiative-nav { margin: 0; padding: 0 0 0 12px; border: 0; border-left: 1px solid var(--line); overflow: visible; }
+.dsh-openspec-root .initiative-nav[hidden] { display: none; }
+.dsh-openspec-root .workspace, .dsh-openspec-root .workspace.has-embedded-app {
+  display: grid; grid-template-rows: auto minmax(0, 1fr); min-height: 0; min-width: 0;
+  height: 100%; margin: 0; border: 0; border-radius: 0; clip-path: none; overflow: hidden;
+}
+.dsh-openspec-root .toolbar { position: relative; top: auto; min-height: 48px; padding: 6px 16px; border-radius: 0; gap: 12px; }
+.dsh-openspec-root .search-field { min-width: 0; flex: 1; }
+.dsh-openspec-root .page {
+  box-sizing: border-box; width: 100%; max-width: none; height: 100%; min-height: 0;
+  margin: 0; padding: 24px clamp(16px, 3cqw, 40px);
+  overflow: auto; overscroll-behavior: contain;
+}
+.dsh-openspec-root .page.is-embedded-app { margin: 0; padding: 0; overflow: hidden; }
+.dsh-openspec-root .initiative-app-host-shell { height: 100%; min-height: 0; }
+.dsh-openspec-root .initiative-app-boundary { height: 100%; min-height: 0; overflow: hidden; }
+@container (max-width: 640px) {
+  .dsh-openspec-root .sidebar { flex-wrap: wrap; gap: 4px; padding: 6px 10px; }
+  .dsh-openspec-root .project-control { flex: 0 0 100%; }
+  .dsh-openspec-root .project-picker-button { min-height: 22px; }
+  .dsh-openspec-root .navigation-strip { flex: 0 1 100%; }
+  .dsh-openspec-root .toolbar { padding: 6px 10px; gap: 6px; }
+  .dsh-openspec-root .search-field { width: 0; }
+  .dsh-openspec-root .search-field input { min-width: 0; width: 100%; }
+}
